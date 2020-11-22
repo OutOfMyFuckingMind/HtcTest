@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="android.view.View"/>
+        <import type="com.chadb.htctest.utils.StringUtils"/>
+        <variable
+            name="employee"
+            type="com.chadb.htctest.data.dto.EmployeeDTO"/>
+    </data>
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="10dp"
+        android:layout_margin="3dp"
+        android:background="@drawable/employee_card_background">
+
+        <LinearLayout
+            android:visibility="@{employee.name != null ? View.VISIBLE : View.GONE}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/employee_data_title"
+                android:text="@string/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/name"
+                android:text="@{employee.name}"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="@{employee.phoneNumber != null ? View.VISIBLE : View.GONE}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/employee_data_title"
+                android:text="@string/phone_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/phone_number"
+                android:text="@{employee.phoneNumber}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="@{!StringUtils.join(employee.skills).isEmpty() ? View.VISIBLE : View.GONE}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/employee_data_title"
+                android:text="@string/skills"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/skills"
+                android:text="@{StringUtils.join(employee.skills)}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>
