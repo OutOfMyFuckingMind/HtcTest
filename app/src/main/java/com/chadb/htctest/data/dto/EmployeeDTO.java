@@ -16,4 +16,11 @@ public class EmployeeDTO {
         this.phoneNumber = phoneNumber;
         this.skills = skills;
     }
+
+    @Override
+    public String toString() {
+        return "EmployeeDTO{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
